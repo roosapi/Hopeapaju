@@ -20,7 +20,7 @@
       <div class="h_list fs-cell fs-xs-full fs-sm-half fs-md-third fs-lg-fourth">
         <div class="img_hover">
           <a href="{{ url('hevoset/'.$heppa['lempinimi']) }}">
-            <img src="http://www.illuusion.net/hopeapaju/k/h/{{ strtolower($heppa['lempinimi']) }}.jpg" class="h_list" />
+            <img src="http://www.illuusion.net/hopeapaju/k/h/{{ $heppa['lempinimi'] }}.jpg" class="h_list" />
             <span class="hover_text"><span>-</span></span>
           </a>
         </div>

@@ -35,6 +35,7 @@ class HorselistController extends Controller
       $horse['ema'] = $dam['nimi'];
       $horse['ema_o'] = $dam['osoite'];
       $horse['omistaja_o'] = Owner::find($horse['omistaja'])->osoite;
+      $horse['lempinimi'] = strtolower(str_replace('ä', 'a', str_replace('ö', 'o', $horse['lempinimi'])));
 
       $now = date('Y');
       $breed = $horse['rotu'];
@@ -81,6 +82,7 @@ class HorselistController extends Controller
       $dam = Horse::find($horse['ema']);
       $horse['isa'] = $sire['nimi'];
       $horse['ema'] = $dam['nimi'];
+      $horse['lempinimi'] = strtolower(str_replace('ä', 'a', str_replace('ö', 'o', $horse['lempinimi'])));
       if ($horse['rotu'] === 'hannover') {
         if ($horse['skp'] == 'ori') {
           $hann_o[] = $horse;

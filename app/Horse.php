@@ -47,6 +47,9 @@ class Horse extends Model
         $date = new \Carbon\Carbon($date);
         return $date->format('Y-m-d');
     }*/
+  public function mod_name() {
+    return str_replace('a', 'ä', str_replace('o', 'ö', $this->lempinimi));
+  }
 
   public function merits() {
     return $this->hasMany('App\Merit', 'hevonen_id');
@@ -92,10 +95,15 @@ class Horse extends Model
 
     if(!($this->isa == 0)) {
       $sire = Horse::find($this->isa);
-      $sireP = $sire->pedigree($prefix . 'i');
+      $sireP = $sire->pedigree($prefix . 'i'); //get sire's pediree
+      //get sire's merits
+      $s_merits = $sire->merits()->select('saavutus')->get()->toArray();
+      $s_merits = array_map(function ($merit) { return $merit['saavutus']; }, $s_merits);
+      $s_merits = implode(', ', $s_merits);
+      //get sire's information
       $sireA = array($prefix . 'i' => array('nimi' => $sire->nimi, 'osoite' => $sire->osoite,
         'rotu' => $sire->rotu, 'skp' => $sire->skp, 'vari' => $sire->vari,
-        'saka' => $sire->saka ? $sire->saka : '-', 'evm' => $sire->evm));
+        'saka' => $sire->saka ? $sire->saka : '-', 'evm' => $sire->evm, 'saav' => $s_merits));
 
       $sirePed = array_merge($sireA, $sireP);
     }
@@ -103,9 +111,13 @@ class Horse extends Model
     if(!($this->ema == 0)) {
       $dam = Horse::find($this->ema);
       $damP = $dam->pedigree($prefix . 'e');
+      //get dam's merits
+      $d_merits = $dam->merits()->select('saavutus')->get()->toArray();
+      $d_merits = array_map(function ($merit) { return $merit['saavutus']; }, $d_merits);
+      $d_merits = implode(', ', $d_merits);
       $damA = array($prefix . 'e' => array('nimi' => $dam->nimi, 'osoite' => $dam->osoite,
         'rotu' => $dam->rotu, 'skp' => $dam->skp, 'vari' => $dam->vari,
-        'saka' => $dam->saka ? $dam->saka : '-', 'evm' => $dam->evm));
+        'saka' => $dam->saka ? $dam->saka : '-', 'evm' => $dam->evm, 'saav' => $d_merits));
       $damPed = array_merge($damA, $damP);
     }
 

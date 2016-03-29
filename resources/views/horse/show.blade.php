@@ -69,8 +69,19 @@
           @else
             <a href="{{ $relative['osoite'] }}">{{ $relative['nimi'] }}</a>
           @endif
-          @if (strlen($prefix) < 3)
-          <br /><small>{{ $relative['vari'] }} {{ $relative['rotu'] }}{{ $relative['skp'] }} {{ $relative['saka'] }}cm</small>
+          @if (strlen($prefix) > 2)
+          @if ($relative['saav'])
+            <small> { {{ $relative['saav'] }} }</small>
+          @endif
+          @else
+          <br /><small>{{ $relative['vari'] }} {{ $relative['rotu'] }}{{ $relative['skp'] }}
+            @if ($relative['saka'])
+              {{ $relative['saka'] }}cm
+            @endif
+            @if ($relative['saav'])
+              <br />{ {{ $relative['saav'] }} }
+            @endif
+          </small>
           @endif
         </td>
         @if (strlen($prefix) == min(3, max(2, $pedstuff['length'])))

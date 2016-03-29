@@ -25,7 +25,12 @@
           </a>
         </div>
         <a href="{{ url('hevoset/'.$heppa['lempinimi']) }}">{{ $heppa['nimi'] }}</a><br />
-        i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />{{ $heppa['suku']}}<br />
+        i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
+        @if ($heppa['suku'] == 0)
+          evm-suku
+        @else
+        {{ $heppa['suku']}}-polvinen suku
+        @endif<br />
       </div>
 
     @endforeach
@@ -44,7 +49,12 @@
         </a>
       </div>
       <a href="{{ url('hevoset/'.$heppa['lempinimi']) }}">{{ $heppa['nimi'] }}</a><br />
-      i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />{{ $heppa['suku'] }}<br />
+      i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
+      @if ($heppa['suku'] == 0)
+        evm-suku
+      @else
+      {{ $heppa['suku']}}-polvinen suku
+      @endif<br />
     </div>
 
   @endforeach
@@ -66,7 +76,12 @@
           </a>
         </div>
         <a href="{{ url('hevoset/'.$heppa['lempinimi']) }}">{{ $heppa['nimi'] }}</a><br />
-        i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />{{ $heppa['suku'] }}<br />
+        i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
+        @if ($heppa['suku'] == 0)
+          evm-suku
+        @else
+        {{ $heppa['suku']}}-polvinen suku
+        @endif<br />
       </div>
 
     @endforeach
@@ -85,7 +100,12 @@
         </a>
       </div>
       <a href="{{ url('hevoset/'.$heppa['lempinimi']) }}">{{ $heppa['nimi'] }}</a><br />
-      i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />{{ $heppa['suku'] }}<br />
+      i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
+      @if ($heppa['suku'] == 0)
+        evm-suku
+      @else
+      {{ $heppa['suku']}}-polvinen suku
+      @endif<br />
     </div>
 
   @endforeach

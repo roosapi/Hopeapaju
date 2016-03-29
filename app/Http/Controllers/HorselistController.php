@@ -13,6 +13,9 @@ use App\Owner;
 
 class HorselistController extends Controller
 {
+  public function __construct() {
+    $this->middleware('auth', ['only' => 'showAll']);
+  }
 
   public function kasvatit() {
     $horses = Horse::where('kasvattaja', 'Hopeapajun Kartano')

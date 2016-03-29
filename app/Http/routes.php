@@ -11,16 +11,8 @@
 |
 */
 
-Route::get('/', 'Controller@index');
-Route::get('puoliveriset', 'HorselistController@pv');
-Route::get('kasvatus', 'HorselistController@kasvatit');
-Route::get('hallinta', 'HorselistController@showAll');
 
-Route::get('hevoset/create', 'HorseController@create');
-Route::get('hevoset/{name}', 'HorseController@show');
-Route::get('hevoset/{id}/edit', 'HorseController@edit');
-Route::patch('hevoset/{id}', 'HorseController@update');
-Route::post('hevoset', 'HorseController@store');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -32,6 +24,17 @@ Route::post('hevoset', 'HorseController@store');
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
+    Route::get('/', 'Controller@index');
+    Route::get('puoliveriset', 'HorselistController@pv');
+    Route::get('kasvatus', 'HorselistController@kasvatit');
+    Route::get('hallinta', 'HorselistController@showAll');
+
+    Route::get('hevoset/create', 'HorseController@create');
+    Route::get('hevoset/{name}', 'HorseController@show');
+    Route::get('hevoset/{id}/edit', 'HorseController@edit');
+    Route::patch('hevoset/{id}', 'HorseController@update');
+    Route::post('hevoset', 'HorseController@store');
 });

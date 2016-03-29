@@ -12,6 +12,11 @@ use App\Horse;
 
 class HorseController extends Controller
 {
+
+  public function __construct() {
+    $this->middleware('auth', ['except' => 'show']);
+  }
+
     public function show($name) {
       $namewithoe = str_replace('o', 'ö', $name);
       $namewithae = str_replace('a', 'ä', $name);

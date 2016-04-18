@@ -124,6 +124,7 @@ class HorselistController extends Controller
       $dam = Horse::find($horse['ema']);
       $horse['isa'] = $sire['nimi'];
       $horse['ema'] = $dam['nimi'];
+      $horse['lempinimi'] = strtolower(str_replace('ä', 'a', str_replace('ö', 'o', $horse['lempinimi'])));
       if ($horse['evm']) {
         $evm[] = $horse;
       } else if ($horse['talli'] !== 'hopeapaju') {

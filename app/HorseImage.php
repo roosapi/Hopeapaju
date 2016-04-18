@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HorseImage extends Model
 {
-  protected $primaryKey = 'url';
+  protected $primaryKey = 'id';
   protected $table = 'hevonen_kuva';
   public $timestamps = false;
 

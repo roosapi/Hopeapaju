@@ -35,15 +35,24 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
 
+    //general pages
     Route::get('/home', 'HomeController@index');
     Route::get('/', 'Controller@index');
     Route::get('puoliveriset', 'HorselistController@pv');
     Route::get('kasvatus', 'HorselistController@kasvatit');
     Route::get('hallinta', 'HorselistController@showAll');
 
+    //horse cru(d)
     Route::get('hevoset/create', 'HorseController@create');
     Route::get('hevoset/{name}', 'HorseController@show');
     Route::get('hevoset/{id}/edit', 'HorseController@edit');
     Route::patch('hevoset/{id}', 'HorseController@update');
     Route::post('hevoset', 'HorseController@store');
+
+    //horseimage cru(d)
+    Route::get('hevoset/{id}/img/create', 'HorseImageController@create');
+  //  Route::get('hevoset/img/{name}', 'HorseImageController@show');
+    Route::get('hevoset/{id}/img/{imgid}/edit', 'HorseImageController@edit');
+    Route::patch('hevoset/{id}/img/{imgid}', 'HorseImageController@update');
+    Route::post('hevoset/{id}/img/', 'HorseImageController@store');
 });

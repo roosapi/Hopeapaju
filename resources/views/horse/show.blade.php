@@ -95,7 +95,7 @@
 
   <div class="tabc" id="kilpailut">
 
-    @if (!empty($points))
+    @if ($points['level'] >= 0)
 
     <div class="fs-grid">
       <div class="fs-row">
@@ -147,7 +147,22 @@
         </div>
       </div>
     </div>
-@endif
+    @endif
+
+    @if(!empty($competitions))
+    <table>
+      <tr><th colspan="5">KRJ: sijoituksia {{ count($competitions) }}kpl</th></tr>
+      @foreach ($competitions as $entry)
+      <tr>
+        <td>{{ $entry->laji }}</td>
+        <td>{{ date('d.m.Y', strtotime($entry->pvm)) }}</td>
+        <td><a href="{{ $entry['kutsu_url'] }}">kutsu</a></td>
+        <td>{{$entry->luokka }}</td>
+        <td>{{ $entry->sija }}/{{ $entry->osallistujia }}</td>
+      </tr>
+      @endforeach
+    </table>
+    @endif
   </div>
 
   <div class="tabc" id="varsat">

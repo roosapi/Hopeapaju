@@ -56,7 +56,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::patch('hevoset/{id}/img/{imgid}', 'HorseImageController@update');
     Route::post('hevoset/{id}/img/', 'HorseImageController@store');
 
-    //hors merit routes
+    //horse merit routes
     Route::get('hevoset/{id}/merit/create', 'MeritController@create');
     Route::post('hevoset/{id}/merit/', 'MeritController@store');
+
+    //horse competition routes
+    Route::get('hevoset/{id}/competition/create', 'CompetitionController@create');
+    Route::post('hevoset/{id}/competition/', 'CompetitionController@store');
 });

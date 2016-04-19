@@ -34,9 +34,10 @@ class HorseController extends Controller
       $merits = $horse->merits;
       $offspring = $horse->offspring();
       $images = $horse->images;
+      $competitions = $horse->competitions;
 
       //return $offspring;
-      return view('horse.show', compact('horse', 'age', 'pedstuff', 'points', 'merits', 'offspring', 'images'));
+      return view('horse.show', compact('horse', 'age', 'pedstuff', 'points', 'merits', 'offspring', 'images', 'competitions'));
     }
 
 

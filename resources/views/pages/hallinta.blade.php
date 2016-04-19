@@ -19,7 +19,7 @@
 
   <table>
     <tr><th>ID</th><th>Hevonen</th><th>Skp</th><th>Isä</th><th>Emä</th>
-      <th>Suvun pituus</th><th colspan="4">Muokkaa</th></tr>
+      <th>Suvun pituus</th><th colspan="5">Muokkaa</th></tr>
 
     @foreach ($hann as $heppa)
     <tr>
@@ -36,6 +36,8 @@
       <td><img src="{{ asset('img/text_icon.png') }}" alt="" /></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/merit/create') }}">
         <img src="{{ asset('img/merit_icon.png') }}" alt="" /></a></td>
+      <td><a href="{{ url('hevoset/'.$heppa['id'].'/competition/create') }}">
+        <img src="{{ asset('img/event_icon.png') }}" alt="" /></a></td>
     </tr>
     @endforeach
   </table>
@@ -47,7 +49,7 @@
 
   <table>
     <tr><th>ID</th><th>Hevonen</th><th>Skp</th><th>Isä</th><th>Emä</th>
-      <th>Suvun pituus</th><th colspan="4">Muokkaa</th></tr>
+      <th>Suvun pituus</th><th colspan="5">Muokkaa</th></tr>
 
     @foreach ($hols as $heppa)
     <tr>
@@ -64,6 +66,8 @@
       <td><img src="{{ asset('img/text_icon.png') }}" alt="" /></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/merit/create') }}">
   <img src="{{ asset('img/merit_icon.png') }}" alt="" /></a></td>
+  <td><a href="{{ url('hevoset/'.$heppa['id'].'/competition/create') }}">
+    <img src="{{ asset('img/event_icon.png') }}" alt="" /></a></td>
     </tr>
     @endforeach
   </table>
@@ -74,7 +78,7 @@
 
   <table>
     <tr><th>ID</th><th>Hevonen</th><th>Skp</th><th>Isä</th><th>Emä</th>
-      <th>Suvun pituus</th><th colspan="4">Muokkaa</th></tr>
+      <th>Suvun pituus</th><th colspan="5">Muokkaa</th></tr>
 
     @foreach ($sh as $heppa)
     <tr>
@@ -91,6 +95,8 @@
       <td><img src="{{ asset('img/text_icon.png') }}" alt="" /></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/merit/create') }}">
   <img src="{{ asset('img/merit_icon.png') }}" alt="" /></a></td>
+  <td><a href="{{ url('hevoset/'.$heppa['id'].'/competition/create') }}">
+    <img src="{{ asset('img/event_icon.png') }}" alt="" /></a></td>
     </tr>
     @endforeach
   </table>

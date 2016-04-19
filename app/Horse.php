@@ -59,6 +59,10 @@ class Horse extends Model
     return $this->hasMany('App\HorseImage', 'hevonen');
   }
 
+  public function competitions() {
+    return $this->hasMany('App\Competition', 'hevonen_id');
+  }
+
   public function offspring() {
     $all = Horse::where('ema', $this->id)->orWhere('isa', $this->id)->orderBy('syntaika')->get()->toArray();
     if ($this->skp == 'tamma') {

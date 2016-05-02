@@ -33,7 +33,8 @@
          <img src="{{ asset('img/edit_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/img/create') }}">
           <img src="{{ asset('img/img_icon.png') }}" alt="" /></a></td>
-      <td><img src="{{ asset('img/text_icon.png') }}" alt="" /></td>
+      <td><a href="{{ url('hevoset/'.$heppa['id'].'/text/create') }}">
+        <img src="{{ asset('img/text_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/merit/create') }}">
         <img src="{{ asset('img/merit_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/competition/create') }}">
@@ -63,7 +64,8 @@
   <img src="{{ asset('img/edit_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/img/create') }}">
   <img src="{{ asset('img/img_icon.png') }}" alt="" /></a></td>
-      <td><img src="{{ asset('img/text_icon.png') }}" alt="" /></td>
+      <td><a href="{{ url('hevoset/'.$heppa['id'].'/text/create') }}">
+  <img src="{{ asset('img/text_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/merit/create') }}">
   <img src="{{ asset('img/merit_icon.png') }}" alt="" /></a></td>
   <td><a href="{{ url('hevoset/'.$heppa['id'].'/competition/create') }}">
@@ -92,7 +94,8 @@
   <img src="{{ asset('img/edit_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/img/create') }}">
   <img src="{{ asset('img/img_icon.png') }}" alt="" /></a></td>
-      <td><img src="{{ asset('img/text_icon.png') }}" alt="" /></td>
+      <td><a href="{{ url('hevoset/'.$heppa['id'].'/text/create') }}">
+  <img src="{{ asset('img/text_icon.png') }}" alt="" /></a></td>
       <td><a href="{{ url('hevoset/'.$heppa['id'].'/merit/create') }}">
   <img src="{{ asset('img/merit_icon.png') }}" alt="" /></a></td>
   <td><a href="{{ url('hevoset/'.$heppa['id'].'/competition/create') }}">

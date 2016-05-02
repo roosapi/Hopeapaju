@@ -11,6 +11,7 @@ class Horse extends Model
    protected $appends = array('pedlength');
    public $timestamps = false;
    protected $dates = ['syntaika'];
+   protected $dateFormat = 'Y-m-d';
 
    protected $fillable = [
 		'nimi',
@@ -26,7 +27,7 @@ class Horse extends Model
 		'kasvattaja',
 		'kasvattaja_url',
 		'painotus',
-    'koulutustaso', //koulu.este.kenttä -> Helppo A.100.Harrasteluokka
+    'koulutustaso', //koulu.este.kenttä -> Helppo A|100|Harrasteluokka
 		'nayttelyt', //boolean
 		'luonne',
 		'isa',
@@ -47,6 +48,7 @@ class Horse extends Model
         $date = new \Carbon\Carbon($date);
         return $date->format('Y-m-d');
     }*/
+
   public function mod_name() {
     return str_replace('a', 'ä', str_replace('o', 'ö', $this->lempinimi));
   }
@@ -61,6 +63,10 @@ class Horse extends Model
 
   public function competitions() {
     return $this->hasMany('App\Competition', 'hevonen_id');
+  }
+
+  public function texts() {
+    return $this->hasMany('App\Text', 'hevonen_id');
   }
 
   public function offspring() {
@@ -97,7 +103,7 @@ class Horse extends Model
     $damPed = array();
     $sirePed = array();
 
-    if(!($this->isa == 0)) {
+    if(!($this->isa == 0) ) {
       $sire = Horse::find($this->isa);
       $sireP = $sire->pedigree($prefix . 'i'); //get sire's pediree
       //get sire's merits
@@ -112,7 +118,7 @@ class Horse extends Model
       $sirePed = array_merge($sireA, $sireP);
     }
 
-    if(!($this->ema == 0)) {
+    if(!($this->ema == 0) ) {
       $dam = Horse::find($this->ema);
       $damP = $dam->pedigree($prefix . 'e');
       //get dam's merits
@@ -187,7 +193,7 @@ class Horse extends Model
 
       $maxlevel_name;
 
-      $all_levels = explode(".", $this->koulutustaso);
+      $all_levels = explode("|", $this->koulutustaso);
       if ($discipline == 'krj') {
         $discipline = $krj;
         $maxlevel_name = $all_levels[0];

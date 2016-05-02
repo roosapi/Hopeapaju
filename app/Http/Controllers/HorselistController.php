@@ -70,8 +70,9 @@ class HorselistController extends Controller
     $horses = DB::table('hevonen')/*Horse::where('talli', 'hopeapaju')*/
                       ->where('talli', 'hopeapaju')
                       ->where('status', 'ok')
-                      ->select('nimi', 'lempinimi', 'rotu', 'skp', 'isa', 'ema', 'suku')
+                      ->select('nimi', 'lempinimi', 'rotu', 'skp', 'syntaika', 'isa', 'ema', 'suku')
                       ->orderBy('suku')
+                      ->orderBy('syntaika', 'ASC')
                       ->get();
 
     $hol_o = array();
@@ -109,7 +110,8 @@ class HorselistController extends Controller
     $horses = DB::table('hevonen')/*Horse::where('talli', 'hopeapaju')*/
                       ->select('id', 'nimi', 'osoite', 'lempinimi', 'rotu',
                       'skp', 'isa', 'ema', 'suku', 'evm', 'talli')
-                      ->orderBy('rotu', 'suku', 'skp')
+                      ->orderBy('suku')
+                      ->orderBy('skp')
                       ->get();
 
     $hann = array();

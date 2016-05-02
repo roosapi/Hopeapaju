@@ -32,7 +32,10 @@
   </tr>
   <tr>
   <th>Syntymäaika &amp; ikä</th><td>{{ $age['dob'] }}, {{ $age['age'] }}v</td>
-  <th>Painotuslaji</th><td>{{ $horse->painotus }}ratsastus</td>
+  <th>Painotuslaji (taso)</th><td>{{ $horse->painotus }}ratsastus (
+    @if (count($competitions) < 1) {{ $points['levelname'] }}
+    @else  {{ $level }}
+    @endif)</td>
   </tr>
   <tr>
   <th>Väri &amp; säkäkorkeus</th><td>{{ $horse->vari }}, {{ $horse->saka }}cm</td>
@@ -44,9 +47,9 @@
 <p>{!! str_replace('\n', '</p><p>', $horse->luonne) !!}</p>
 
   <ul id="tabs">
-    <li><a href="#suku">Sukutaulu</a></li>
-    <li><a href="#kilpailut">Kilpailutiedot</a></li>
-    <li><a href="#varsat">Jälkeläiset</a></li>
+    <li><span class="suku">Sukutaulu</span></li>
+    <li><span class="kilpailut">Kilpailutiedot</span></li>
+    <li><span class="varsat">Jälkeläiset</span></li>
   </ul>
 
 
@@ -149,16 +152,23 @@
     </div>
     @endif
 
-    @if(!empty($competitions))
+    @if(count($competitions) > 0)
     <table>
       <tr><th colspan="5">KRJ: sijoituksia {{ count($competitions) }}kpl</th></tr>
       @foreach ($competitions as $entry)
       <tr>
         <td>{{ $entry->laji }}</td>
         <td>{{ date('d.m.Y', strtotime($entry->pvm)) }}</td>
-        <td><a href="{{ $entry['kutsu_url'] }}">kutsu</a></td>
+        <td>
+          @if (!empty($entry->paikka)) {{ $entry->paikka }}
+          @else <a href="{{ $entry['kutsu_url'] }}">kutsu</a>
+          @endif</td>
         <td>{{$entry->luokka }}</td>
-        <td>{{ $entry->sija }}/{{ $entry->osallistujia }}</td>
+        <td>
+          @if ($entry->sija == 1) <u>{{ $entry->sija }}/{{ $entry->osallistujia }}</u>
+          @else {{ $entry->sija }}/{{ $entry->osallistujia }}
+          @endif
+          </td>
       </tr>
       @endforeach
     </table>

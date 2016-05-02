@@ -49,7 +49,8 @@
 
   <script type="text/javascript">
   $(window).on("scroll touchmove", function () {
-    $('#navi').toggleClass('minimal', $(document).scrollTop() > 0);
+    $('#navi').toggleClass('minimal', $(document).scrollTop() > 250);
+    $('#head_imgs').toggleClass('head_minimal', $(document).scrollTop() > 250);
   });
   </script>
   @yield('footer')

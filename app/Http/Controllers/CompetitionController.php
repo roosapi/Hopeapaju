@@ -31,32 +31,59 @@ class CompetitionController extends Controller
       $horse = Horse::find($id);
 
       foreach($list as $entry) {
-        $things = explode(' | ', $entry);
+        $things = explode('|', $entry);
+        $things2 = explode('-', $entry);
 
-        // Handle the url part
-        $url = str_replace('<a href="', '', $things[0]);
-        $url = str_replace('">Kutsu</a>', '', $url);
-        $url = trim($url);
+        if (sizeof($things) > sizeof($things2)) {
+          // Handle the url part
+          $url = str_replace('<a href="', '', $things[0]);
+          $url = str_replace('">Kutsu</a>', '', $url);
+          $url = trim($url);
 
-        //date
-        $date = strtotime(str_replace('.', '-', trim($things[1])));
-        //class
-        $class = trim($things[2]);
-        //placement
-        $placement = trim(strip_tags($things[3]));
-        $participants = explode('/', $placement)[1];
-        $participants = preg_replace('/(\d+) (.*)/', '$1', $participants);
-        $placement = explode('/', $placement)[0];
+          //date
+          $date = strtotime(str_replace('.', '-', trim($things[1])));
+          //class
+          $class = trim($things[2]);
+          //placement
+          $placement = trim(strip_tags($things[3]));
+          $participants = explode('/', $placement)[1];
+          $participants = preg_replace('/(\d+) (.*)/', '$1', $participants);
+          $placement = explode('/', $placement)[0];
 
-        Competition::create(['hevonen_id' => $id,
-          'laji' => $discipline,
-          'pvm' => $date,
-          //'paikka',
-          'kutsu_url' => $url,
-          'luokka' => $class,
-          'sija' => $placement,
-          'osallistujia' => $participants
-        ]);
+          Competition::create(['hevonen_id' => $id,
+            'laji' => $discipline,
+            'pvm' => $date,
+            //'paikka',
+            'kutsu_url' => $url,
+            'luokka' => $class,
+            'sija' => $placement,
+            'osallistujia' => $participants
+          ]);
+        } else if (sizeof($things) < sizeof($things2)) {
+
+          //date
+          $date = strtotime(str_replace('.', '-', trim($things2[1])));
+          //place
+          $place = trim($things2[2]);
+          //class
+          $class = trim($things2[3]);
+          //placement
+          $placement = trim(strip_tags($things2[4]));
+          $participants = explode('/', $placement)[1];
+          $participants = preg_replace('/(\d+) (.*)/', '$1', $participants);
+          $placement = explode('/', $placement)[0];
+
+          Competition::create(['hevonen_id' => $id,
+            'laji' => $discipline,
+            'pvm' => $date,
+            'paikka' => $place,
+            'luokka' => $class,
+            'sija' => $placement,
+            'osallistujia' => $participants
+          ]);
+        }
+
+
 
       }
 

@@ -36,8 +36,12 @@ class HorseController extends Controller
       $images = $horse->images;
       $competitions = $horse->competitions;
 
+      $taso = explode('.', $horse->koulutustaso);
+      $taso = array_filter($taso, function($v){return $v !== '';});
+      $level = implode(', ', $taso);
+
       //return $offspring;
-      return view('horse.show', compact('horse', 'age', 'pedstuff', 'points', 'merits', 'offspring', 'images', 'competitions'));
+      return view('horse.show', compact('horse', 'age', 'pedstuff', 'points', 'merits', 'offspring', 'images', 'competitions', 'level'));
     }
 
 
@@ -47,8 +51,13 @@ class HorseController extends Controller
 
     public function store() {
       $input = Request::all();
-      Horse::create($input);
-      return redirect('hevoset/'.$input['lempinimi']);
+      $horse = Horse::create($input);
+      if ($horse->lempinimi !== '') {
+        return redirect('hevoset/'.$input['lempinimi']);
+      } else {
+        return redirect('hallinta');
+      }
+
     }
 
     public function edit($id) {

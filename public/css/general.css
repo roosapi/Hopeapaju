@@ -128,6 +128,10 @@ td {
   background: rgba(255,255,255,0.5);
 }
 
+tr:hover td {
+  background:rgba(241,241,241,0.5);
+}
+
 .info th, .info td {
   width:25%;
   border:1px solid #73B7BB;}
@@ -136,6 +140,7 @@ td {
   padding: 13px 5px 10px 14px;
   border:1px solid #73B7BB;
   line-height: 1.35em;
+  width: 33%;
 }
 
 .s a {
@@ -144,6 +149,10 @@ td {
   font-size: 0.8em;
   color:#2B8288;
   letter-spacing: 1px;
+}
+
+.info tr:hover td, .s tr:hover td {
+  background:rgba(255,255,255,0.5);
 }
 
 /* Form table */
@@ -254,7 +263,7 @@ span.hover_text span {
 
 header {
   position:relative;
-  background: url(../img/bg.png) #E0BBFF;
+  background: url(../img/bg.png) #ddffcc;
   width:100%;
   height:246px;
   top:0;
@@ -266,8 +275,11 @@ header {
 #head_imgs {
   position:relative;
   width:100%;
-  xmargin-top: 30px;
   text-align: center;
+}
+
+.head_minimal {
+  margin-top: 105px;
 }
 
 .header_img {
@@ -301,7 +313,7 @@ nav {
   width:100%;
   margin-bottom: 30px;
   text-align:center;
-  xbackground:white;
+  height:105px;
 }
 
 nav ul {
@@ -312,8 +324,6 @@ nav ul {
 nav li {
   display:inline-block;
   padding:0;
-  xwidth:140px;
-  xtext-align:center;
   margin: 10px 10px;
 
 }
@@ -344,7 +354,6 @@ nav a:hover {color:#F06F7E;}
 #logo {
   font-family:'Lane';
   width:100%;
-  xtext-align:center;
   color:#2B8288;
   font-size:1.8em;
   text-transform:uppercase;
@@ -381,10 +390,10 @@ nav a:hover {color:#F06F7E;}
 }
 
 nav, header, a, li{
-  transition: all 0.4s;
-  -moz-transition: all 0.4s; /* Firefox 4 */
-  -webkit-transition: all 0.4s; /* Safari and Chrome */
-  -o-transition: all 0.4s; /* Opera */
+  transition: all 0.2s;
+  -moz-transition: all 0.2s; /* Firefox 4 */
+  -webkit-transition: all 0.2s; /* Safari and Chrome */
+  -o-transition: all 0.2s; /* Opera */
 }
 
 
@@ -449,25 +458,22 @@ footer {
   list-style:none;
   margin: 0 25px;
   outline:none;
-}
-
-#tabs li a {
-
   font-family:'Lane';
   color:#F06F7E;
   text-transform:lowercase;
   font-size: 1.6em;
-
+  font-weight: bold;
 }
 
-#tabs li a.inactive{
+#tabs li .inactive{
   color:#2B8288;
 
 }
 
-#tabs li a:hover, #tabs li a.inactive:hover {
+#tabs li:hover, #tabs li .inactive:hover {
   color: #194C4F;
   outline:none;
+  cursor:pointer;
 }
 
 

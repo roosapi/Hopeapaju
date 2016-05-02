@@ -5,8 +5,8 @@
 
 
 <ul id="tabs">
-  <li><a href="#new">Kuluvan vuoden kasvatit</a></li>
-  <li><a href="#old">Vanhemmat kasvatit</a></li>
+  <li><span class="new">Kuluvan vuoden kasvatit</span></li>
+  <li><span class="old">Vanhemmat kasvatit</span></li>
 </ul>
 
 <div class="tabc" id="new">
@@ -105,18 +105,19 @@
 <script>
 //Tabs
 $(document).ready(function() {
-  $('#tabs li a:not(:first)').addClass('inactive');
+  $('#tabs li span:not(:first)').addClass('inactive');
   $('.tabc').hide();
   $('.tabc:first').show();
 
-  $('#tabs li a').click(function(){
-      var t = $(this).attr('href');
+  $('#tabs li span').click(function(){
+      var t = $(this).attr('class').replace(" inactive", "");
+      console.log(t);
       if($(this).hasClass('inactive')){ //this is the start of our condition
-        $('#tabs li a').addClass('inactive');
+        $('#tabs li span').addClass('inactive');
         $(this).removeClass('inactive');
 
         $('.tabc').hide();
-        $(t).fadeIn(300);
+        $('#' + t).fadeIn(300);
       }
   });
 });

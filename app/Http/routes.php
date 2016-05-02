@@ -63,4 +63,8 @@ Route::group(['middleware' => 'web'], function () {
     //horse competition routes
     Route::get('hevoset/{id}/competition/create', 'CompetitionController@create');
     Route::post('hevoset/{id}/competition/', 'CompetitionController@store');
+
+    //horse text routes
+    Route::get('hevoset/{id}/text/create', 'TextController@create');
+    Route::post('hevoset/{id}/text/', 'TextController@store');
 });

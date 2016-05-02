@@ -7,8 +7,8 @@
 <div class="fs-row">
 
 <ul id="tabs">
-  <li><a href="#hann">Hannover</a></li>
-  <li><a href="#hols">Holstein</a></li>
+  <li><span class="hann">Hannover</span></li>
+  <li><span class="hols">Holstein</span></li>
 </ul>
 
 <div class="tabc  wide" id="hann">
@@ -28,6 +28,8 @@
         i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
         @if ($heppa['suku'] == 0)
           evm-suku
+        @elseif ($heppa['suku'] > 4)
+          pitkäsukuinen
         @else
         {{ $heppa['suku']}}-polvinen suku
         @endif<br />
@@ -52,6 +54,8 @@
       i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
       @if ($heppa['suku'] == 0)
         evm-suku
+      @elseif ($heppa['suku'] > 4)
+        pitkäsukuinen
       @else
       {{ $heppa['suku']}}-polvinen suku
       @endif<br />
@@ -79,8 +83,10 @@
         i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
         @if ($heppa['suku'] == 0)
           evm-suku
+        @elseif ($heppa['suku'] > 4)
+          pitkäsukuinen
         @else
-        {{ $heppa['suku']}}-polvinen suku
+          {{ $heppa['suku']}}-polvinen suku
         @endif<br />
       </div>
 
@@ -103,6 +109,8 @@
       i. {{ $heppa['isa'] }}<br />e. {{ $heppa['ema'] }}<br />
       @if ($heppa['suku'] == 0)
         evm-suku
+      @elseif ($heppa['suku'] > 4)
+        pitkäsukuinen
       @else
       {{ $heppa['suku']}}-polvinen suku
       @endif<br />
@@ -119,18 +127,19 @@
 <script>
 //Tabs
 $(document).ready(function() {
-  $('#tabs li a:not(:first)').addClass('inactive');
+  $('#tabs li span:not(:first)').addClass('inactive');
   $('.tabc').hide();
   $('.tabc:first').show();
 
-  $('#tabs li a').click(function(){
-      var t = $(this).attr('href');
+  $('#tabs li span').click(function(){
+      var t = $(this).attr('class').replace(" inactive", "");
+      console.log(t);
       if($(this).hasClass('inactive')){ //this is the start of our condition
-        $('#tabs li a').addClass('inactive');
+        $('#tabs li span').addClass('inactive');
         $(this).removeClass('inactive');
 
         $('.tabc').hide();
-        $(t).fadeIn(300);
+        $('#' + t).fadeIn(300);
       }
   });
 });
